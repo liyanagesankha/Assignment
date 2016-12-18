@@ -10,9 +10,10 @@ class Services extends CI_Controller {
     
     private function LoadServicesPage()
     {
-        $data['pageTitle'] = 'Services - Nature Nest';        
+        $data['pageTitle'] = 'Services - Nature Nest';
+        $data['signButtonText'] = 'Sign in'; 
         $this->load->view('site/template/header', $data);
-        $this->load->view('site/template/navigation');
+        $this->load->view('site/template/navigation', $data);
         $this->load->view('site/services');
         $this->load->view('site/template/footer');
     }

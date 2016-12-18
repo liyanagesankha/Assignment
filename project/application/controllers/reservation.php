@@ -10,9 +10,10 @@ class Reservation extends CI_Controller {
     
     private function LoadReservationPage()
     {
-        $data['pageTitle'] = 'Reservation - Nature Nest';        
+        $data['pageTitle'] = 'Reservation - Nature Nest';  
+        $data['signButtonText'] = 'Sign in'; 
         $this->load->view('site/template/header', $data);
-        $this->load->view('site/template/navigation');
+        $this->load->view('site/template/navigation', $data);
         $this->load->view('site/reservation');
         $this->load->view('site/template/footer');
     }

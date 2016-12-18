@@ -10,9 +10,10 @@ class ContactUs extends CI_Controller {
     
     private function LoadContactUsPage()
     {
-        $data['pageTitle'] = 'Contact Us - Nature Nest';        
+        $data['pageTitle'] = 'Contact Us - Nature Nest'; 
+        $data['signButtonText'] = 'Sign in'; 
         $this->load->view('site/template/header', $data);
-        $this->load->view('site/template/navigation');
+        $this->load->view('site/template/navigation', $data);
         $this->load->view('site/contactUs');
         $this->load->view('site/template/footer');
     }

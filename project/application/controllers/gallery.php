@@ -10,9 +10,10 @@ class Gallery extends CI_Controller {
     
     private function LoadGalleryPage()
     {
-        $data['pageTitle'] = 'Gallery - Nature Nest';        
+        $data['pageTitle'] = 'Gallery - Nature Nest';
+        $data['signButtonText'] = 'Sign in'; 
         $this->load->view('site/template/header', $data);
-        $this->load->view('site/template/navigation');
+        $this->load->view('site/template/navigation', $data);
         $this->load->view('site/gallery');
         $this->load->view('site/template/footer');
     }

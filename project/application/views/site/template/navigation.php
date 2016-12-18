@@ -9,7 +9,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?php echo site_url('Home');?>">Nature Nest Logo</a>
+                <a class="navbar-brand" href="<?php echo site_url('Home');?>">Nature Nest Logo</a>                
             </div><!-- /.navbar-header -->
                 <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="natureNestNavigationBar">
@@ -18,8 +18,9 @@
                     <li><a href="<?php echo site_url('Gallery');?>">Gallery</a></li>
                     <li><a href="<?php echo site_url('Reservation');?>">Reservation</a></li>
                     <li><a href="<?php echo site_url('Services');?>">Services</a></li>
-                    <li><a href="<?php echo site_url('ContactUs');?>">Contact Us</a></li>
+                    <li><a href="<?php echo site_url('ContactUs');?>">Contact Us</a></li>                    
                 </ul>
+                <a href="<?php echo site_url('SignIn');?>" class="btn btn-default navbar-btn navbar-right"><?php echo $signButtonText ?></a>
             </div><!-- /.navbar-collapse -->            
         </div><!-- /.container-fluid -->
     </nav>
