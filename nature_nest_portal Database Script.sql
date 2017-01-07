@@ -1,15 +1,11 @@
 --- phpMyAdmin SQL Dump
--- liyanage.sankha@gmail.com
 -- version 4.6.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2016 at 04:59 PM
+-- Generation Time: Jan 07, 2017 at 06:56 AM
 -- Server version: 5.6.28-log
 -- PHP Version: 5.6.25
-
---Create database and named it as "nature_nest_portal" then excecute this script
-
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -70,6 +66,17 @@ CREATE TABLE `employeeleave` (
   `StartDate` date NOT NULL,
   `EndDate` date NOT NULL,
   `Comment` varchar(500) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `employeerole`
+--
+
+CREATE TABLE `employeerole` (
+  `EmployeeId` int(11) NOT NULL,
+  `RoleId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -247,6 +254,17 @@ CREATE TABLE `role` (
   `description` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `role`
+--
+
+INSERT INTO `role` (`id`, `name`, `description`) VALUES
+(1, 'Select All (Admin)', 'Give full access to the portal'),
+(2, 'Package Management', 'Manage the Packages'),
+(3, 'Service Management', 'Manage the services'),
+(4, 'Finance Management', 'Manage the finance'),
+(5, 'Human Resource Management', 'HRM is the term used to describe formal systems devised for the management of people within an organization.');
+
 -- --------------------------------------------------------
 
 --
@@ -291,17 +309,6 @@ CREATE TABLE `user` (
   `IsEmployee` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `userrole`
---
-
-CREATE TABLE `userrole` (
-  `userId` int(11) NOT NULL,
-  `roleId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 --
 -- Indexes for dumped tables
 --
@@ -330,6 +337,13 @@ ALTER TABLE `employeeleave`
   ADD KEY `LeaveId` (`LeaveId`),
   ADD KEY `EmployeeId` (`EmployeeId`),
   ADD KEY `LeaveId_2` (`LeaveId`);
+
+--
+-- Indexes for table `employeerole`
+--
+ALTER TABLE `employeerole`
+  ADD PRIMARY KEY (`EmployeeId`,`RoleId`),
+  ADD KEY `foreignkey_employeerole_role` (`RoleId`);
 
 --
 -- Indexes for table `feedback`
@@ -435,13 +449,6 @@ ALTER TABLE `user`
   ADD UNIQUE KEY `UserName` (`UserName`);
 
 --
--- Indexes for table `userrole`
---
-ALTER TABLE `userrole`
-  ADD PRIMARY KEY (`userId`,`roleId`),
-  ADD KEY `foreignkey_role_userrole` (`roleId`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -454,7 +461,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `employeeleave`
 --
@@ -514,7 +521,7 @@ ALTER TABLE `reservation`
 -- AUTO_INCREMENT for table `role`
 --
 ALTER TABLE `role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `service`
 --
@@ -524,7 +531,7 @@ ALTER TABLE `service`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- Constraints for dumped tables
 --
@@ -542,6 +549,13 @@ ALTER TABLE `employee`
 ALTER TABLE `employeeleave`
   ADD CONSTRAINT `foreignkey_employee_employeeLeave` FOREIGN KEY (`EmployeeId`) REFERENCES `employee` (`Id`),
   ADD CONSTRAINT `foreignkey_leave_employeeLeave` FOREIGN KEY (`LeaveId`) REFERENCES `leavedata` (`Id`);
+
+--
+-- Constraints for table `employeerole`
+--
+ALTER TABLE `employeerole`
+  ADD CONSTRAINT `foreignkey_employeerole_employee` FOREIGN KEY (`EmployeeId`) REFERENCES `employee` (`Id`),
+  ADD CONSTRAINT `foreignkey_employeerole_role` FOREIGN KEY (`RoleId`) REFERENCES `role` (`id`);
 
 --
 -- Constraints for table `feedbackcustomer`
@@ -594,13 +608,6 @@ ALTER TABLE `rotator`
 --
 ALTER TABLE `service`
   ADD CONSTRAINT `foreignkey_service_image` FOREIGN KEY (`ImageId`) REFERENCES `image` (`Id`);
-
---
--- Constraints for table `userrole`
---
-ALTER TABLE `userrole`
-  ADD CONSTRAINT `foreignkey_role_userrole` FOREIGN KEY (`roleId`) REFERENCES `role` (`id`),
-  ADD CONSTRAINT `foreignkey_user_userrole` FOREIGN KEY (`userId`) REFERENCES `user` (`Id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
