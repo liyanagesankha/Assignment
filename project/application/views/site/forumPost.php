@@ -5,7 +5,7 @@
 	
 		<!--Description about the Forum-->
 		<div id="Description">
-			<p>This is the Forum Page. You can add new sub forums and go to existing sub forums.</p>
+			<p>This is the Forum Post Page. You can add new topics and go to existing topics.</p>
 		</div>
 		
 		<!--Contains Forms to Add New Sub Forums and to Search-->
@@ -13,8 +13,8 @@
 
 			<!--Form to Add New Sub Forum-->
 			<div id="AddButton">
-			<form action="addNewSubForum" method="post">
-				<input type="submit" value="Add New Sub Forum">
+			<form action="addNewTopic" method="post">
+				<input type="submit" value="Add New Topic">
 			</form>
 			<br>
 
@@ -32,37 +32,19 @@
 		<div id="SubForumList">
 			<table>
 				<tr>
-					<th colspan="2">Sub Forum</th>
-					<th># Threads</th>
-					<th># Posts</th>
+					<th colspan="2">Topic</th>
+					<th># Replies</th>
+					<th># Views</th>
 				</tr>
 				<tr>
 					<td><img src="images/accomodation.png"></td>
-					<td>Accomadation</td>
+					<td>Topic 1</td>
 					<td>10</td>
 					<td>10</td>
 				</tr>
 				<tr>
 					<td><img src="images/dining.png"</td>
-					<td>Dining</td>
-					<td>10</td>
-					<td>10</td>
-				</tr>
-				<tr>
-					<td><img src="images/hospitality.png"></td>
-					<td>Hospitality</td>
-					<td>10</td>
-					<td>10</td>
-				</tr>
-				<tr>
-					<td><img src="images/spa.png"></td>
-					<td>Spa and Recreation</td>
-					<td>10</td>
-					<td>10</td>
-				</tr>
-				<tr>
-					<td><img src="images/experience.png"></td>
-					<td>Experience</td>
+					<td>Topic 2</td>
 					<td>10</td>
 					<td>10</td>
 				</tr>
