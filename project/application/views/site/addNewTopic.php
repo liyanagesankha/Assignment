@@ -11,7 +11,7 @@
 			<br><br>
 
 			<form action="upload.php" method="post" enctype="multipart/form-data">
-    		Select image to upload:
+    		<p>Select file to upload:</p>
     		<input type="file" name="fileToUpload" id="fileToUpload">
 		</form>
 		<br>
