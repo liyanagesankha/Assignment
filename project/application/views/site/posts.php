@@ -5,7 +5,7 @@
 	
 		<!--Description about the Forum-->
 		<div id="Description">
-			<p>This is the Forum Post Page. You can add new topics and go to existing topics.</p>
+			<p>This is the Post Page. You can add new posts and view the existing main posts.</p>
 		</div>
 		
 		<!--Contains Forms to Add New Sub Forums and to Search-->
@@ -14,7 +14,7 @@
 			<!--Form to Add New Sub Forum-->
 			<div id="AddButton">
 			<form action="addNewTopic" method="post">
-				<input type="submit" value="Add New Topic">
+				<input type="submit" value="Add New Post">
 			</form>
 			<br>
 
@@ -29,25 +29,28 @@
 		</div>
 
 		<!--Contains Sub Forum List with the number of threads and number of posts-->
-		<div id="SubForumList">
+		<div id="PostsList">
 			<table>
-				<tr>
-					<th width="500" colspan="2">Topic</th>
-					<th width="200"># Replies</th>
-					<th width="500"># Views</th>
-				</tr>
+				
+				<?php 
+				if($post){
+				echo "<tr>
+					<th>Posts</th>
+					<th># Replies</th>
+					<th># Views</th>
+				</tr>";
+				
+				foreach ($post as $row):
+				?>
 				<tr height="50">
-					<td><img src="images/accomodation.png"></td>
-					<td>Topic 1</td>
-					<td>10</td>
-					<td>10</td>
+					<td width="500"><?php echo '<a href="http://localhost/assignment/trunk/project/index.php/showPost/LoadShowPostPage/'.$row->post_id.'">'.$row->title.'</a>'; ?></td>
+					<td width="200"><?php echo $row->no_of_replies; ?></td>
+					<td width="500"><?php echo $row->no_of_views; ?></td>
 				</tr>
-				<tr height="50">
-					<td><img src="images/dining.png"</td>
-					<td>Topic 2</td>
-					<td>10</td>
-					<td>10</td>
-				</tr>
+				<?php
+				endforeach;
+				}else{ echo "No Posts Yet!"; }
+				?>
 			</table>
 		</div>
 

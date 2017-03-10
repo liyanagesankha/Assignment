@@ -29,43 +29,26 @@
 		</div>
 
 		<!--Contains Sub Forum List with the number of threads and number of posts-->
-		<div id="SubForumList">
+		<div id="SubForumList">	
 			<table>
 				<tr>
-					<th colspan="2">Sub Forum</th>
-					<th># Threads</th>
-					<th># Posts</th>
+					<th width="500" colspan="2">Sub Forum</th>
+					<th width="200"># Threads</th>
+					<th width="500"># Posts</th>
 				</tr>
-				<tr>
-					<td><img src="images/accomodation.png"></td>
-					<td>Accomadation</td>
-					<td>10</td>
-					<td>10</td>
-				</tr>
-				<tr>
-					<td><img src="images/dining.png"</td>
-					<td>Dining</td>
+
+				<?php 
+				foreach ($subforums as $row):
+				?>
+				<tr height="50">
+					<td><img src="<?php echo base_url() ?>/../branding/images/<?php echo "subforum_".$row->title ?>.png" width="40"></td>
+					<td><?php echo '<a href="http://localhost/assignment/trunk/project/index.php/posts/LoadPostsPage/'.$row->sf_id.'">'; ?> <?php echo $row->title; ?></a></td>
 					<td>10</td>
 					<td>10</td>
 				</tr>
-				<tr>
-					<td><img src="images/hospitality.png"></td>
-					<td>Hospitality</td>
-					<td>10</td>
-					<td>10</td>
-				</tr>
-				<tr>
-					<td><img src="images/spa.png"></td>
-					<td>Spa and Recreation</td>
-					<td>10</td>
-					<td>10</td>
-				</tr>
-				<tr>
-					<td><img src="images/experience.png"></td>
-					<td>Experience</td>
-					<td>10</td>
-					<td>10</td>
-				</tr>
+				<?php
+				endforeach;
+				?>
 			</table>
 		</div>
 

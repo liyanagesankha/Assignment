@@ -1,22 +1,22 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Forum extends CI_Controller
+class Posts extends CI_Controller
 {
   public function index()
   { 
-    $this->LoadForumPage();
+    $this->LoadPostsPage();
   } 
   		
-  private function LoadForumPage()
+  public function LoadPostsPage($subForum)
   {
-    $data['pageTitle'] = 'Forum - Nature Nest'; 
+    $data['pageTitle'] = 'Posts - Nature Nest'; 
     $data['signButtonText'] = 'Sign in';
-    $this->load->model('subForumModel');
-    $data['subforums'] = $this->subForumModel->GetMainSubForums();
+    $this->load->model('postsModel');
+    $data['post'] = $this->postsModel->GetMainPosts($subForum);
     $this->load->view('site/template/header', $data);
     $this->load->view('site/template/navigation', $data);
-    $this->load->view('site/forum',$data);
+    $this->load->view('site/posts', $data);
     $this->load->view('site/template/footer');
   }
 

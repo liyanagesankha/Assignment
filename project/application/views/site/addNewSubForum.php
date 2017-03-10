@@ -1,5 +1,5 @@
 <div class="container">
-	<H1>Add New Sub Forum Page will be developed here.</H1>	
+	<H3>Please add new Sub Forums</H3>
 	<div id="DataInput"></div>
 		<form>
 			<p>Forum Name*</p>
